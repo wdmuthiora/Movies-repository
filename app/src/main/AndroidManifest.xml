@@ -15,7 +15,7 @@
             android:name=".UI.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".UI.MainActivity3"
+            android:name=".UI.MovieSearchActivity"
             android:exported="false" />
         <activity
             android:name=".UI.MainActivity2"

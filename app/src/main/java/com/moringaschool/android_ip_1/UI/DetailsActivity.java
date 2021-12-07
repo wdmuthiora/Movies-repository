@@ -78,7 +78,7 @@ public class DetailsActivity extends AppCompatActivity {
     private void showResults(DetailApiResponse response) { //map incoming data from api to elements.
 
         tvMovieName.setText(response.getTitle());
-        tvMovieReleaseYear.setText("Year"+response.getYear());
+        tvMovieReleaseYear.setText("Year: "+response.getYear());
         tvMovieRating.setText("Rating: "+response.getRating());
         tvMovieLength.setText("Length: " +response.getLength());
         Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url

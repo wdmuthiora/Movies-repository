@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/orange"
+                app:cardBackgroundColor="@android:color/darker_gray"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">
 
@@ -38,7 +38,7 @@
                         android:padding="8dp"
                         android:text="Movie name"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/green"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -49,7 +49,7 @@
                         android:padding="8dp"
                         android:text="Run time"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/green"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
                         android:padding="8dp"
                         android:text="Rating"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/green"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
                         android:padding="8dp"
                         android:text="Release year"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/green"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -88,11 +88,12 @@
                         android:id="@+id/tvMovieDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="8dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="8dp"
                         android:text="Description"
-                        android:textColor="@color/white"
+                        android:textColor="@color/green"
                         android:textStyle="italic" />
 
                 </LinearLayout>

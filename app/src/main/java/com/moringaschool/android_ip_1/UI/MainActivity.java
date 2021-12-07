@@ -10,11 +10,10 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.moringaschool.android_ip_1.R;
-import com.moringaschool.android_ip_1.UI.MainActivity2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+//LOGIN
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.startBtn) ConstraintLayout startBtn;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 //capture user input
                 String inputUserName = userName.getText().toString();
 
-                Intent intent=new Intent(MainActivity.this, MainActivity3.class);
+                Intent intent=new Intent(MainActivity.this, MovieSearchActivity.class);
 
                 //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);

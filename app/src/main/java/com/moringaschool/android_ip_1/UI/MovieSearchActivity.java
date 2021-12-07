@@ -1,6 +1,5 @@
 package com.moringaschool.android_ip_1.UI;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
@@ -23,7 +22,7 @@ import com.moringaschool.android_ip_1.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity3 extends AppCompatActivity implements OnMovieClickListener {
+public class MovieSearchActivity extends AppCompatActivity implements OnMovieClickListener {
 
     @BindView(R.id.tvProfileGreeting) TextView tvProfileGreeting;
     @BindView(R.id.svSearchView) SearchView svSearchView;
@@ -47,7 +46,6 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         Intent intent = getIntent();
         String inputUserName = intent.getStringExtra("inputUserName");
 
-        Toast.makeText(MainActivity3.this, "What did the Doctor say to the midget in the waiting room? ", Toast.LENGTH_LONG).show();
         tvProfileGreeting.setText("Welcome back, Kiongoss "+inputUserName);
 
         dialog=new ProgressDialog(this);
@@ -58,6 +56,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(MovieSearchActivity.this, "What did the Doctor say to the midget in the waiting room? ", Toast.LENGTH_LONG).show();
 
                 dialog.setTitle("Wait for it..."); //show this while waiting. Be sure to dismiss() after
                 dialog.show();
@@ -84,7 +83,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
 
             if(response==null){
 
-                Toast.makeText(MainActivity3.this, "You caught us. No data available", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MovieSearchActivity.this, "You caught us. No data available", Toast.LENGTH_SHORT).show();
                 return; //to get out of this.
 
             }
@@ -98,7 +97,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         public void onError(String message) {
 
             dialog.dismiss();
-            Toast.makeText(MainActivity3.this, "An error occurred", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MovieSearchActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
 
         }
 
@@ -107,7 +106,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
     private void showResult(SearchApiResponse response) {
 
         rvRecyclerView.setHasFixedSize(true);
-        rvRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity3.this, 1)); //show 3 items per row
+        rvRecyclerView.setLayoutManager(new GridLayoutManager(MovieSearchActivity.this, 1)); //show 3 items per row
         adapter=new HomeRecyclerAdapter(this, response.getTitles(), this);
         rvRecyclerView.setAdapter(adapter);
         
@@ -116,7 +115,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
     @Override
     public void onMovieClicked(String id) {
 
-        startActivity(new Intent(MainActivity3.this, DetailsActivity.class).putExtra("movie_id", id)); //pass id to the DetailsActivity
+        startActivity(new Intent(MovieSearchActivity.this, DetailsActivity.class).putExtra("movie_id", id)); //pass id to the DetailsActivity
 
     }
 
