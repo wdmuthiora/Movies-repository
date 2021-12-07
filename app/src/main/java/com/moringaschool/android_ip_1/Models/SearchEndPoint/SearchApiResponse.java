@@ -1,27 +1,26 @@
-
 package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MovieIMDB {
+public class SearchApiResponse {
 
     @SerializedName("titles")
     @Expose
-    private List<Title> titles = null;
+    private List<SearchApiObject> titles = null;
     @SerializedName("names")
     @Expose
-    private List<Name> names = null;
+    private List<SearchApiObject> names = null;
     @SerializedName("companies")
     @Expose
-    private List<Company> companies = null;
+    private List<SearchApiObject> companies = null;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public MovieIMDB() {
+    public SearchApiResponse() {
     }
 
     /**
@@ -30,34 +29,34 @@ public class MovieIMDB {
      * @param names
      * @param titles
      */
-    public MovieIMDB(List<Title> titles, List<Name> names, List<Company> companies) {
+    public SearchApiResponse(List<SearchApiObject> titles, List<SearchApiObject> names, List<SearchApiObject> companies) {
         super();
         this.titles = titles;
         this.names = names;
         this.companies = companies;
     }
 
-    public List<Title> getTitles() {
+    public List<SearchApiObject> getTitles() {
         return titles;
     }
 
-    public void setTitles(List<Title> titles) {
+    public void setTitles(List<SearchApiObject> titles) {
         this.titles = titles;
     }
 
-    public List<Name> getNames() {
+    public List<SearchApiObject> getNames() {
         return names;
     }
 
-    public void setNames(List<Name> names) {
+    public void setNames(List<SearchApiObject> names) {
         this.names = names;
     }
 
-    public List<Company> getCompanies() {
+    public List<SearchApiObject> getCompanies() {
         return companies;
     }
 
-    public void setCompanies(List<Company> companies) {
+    public void setCompanies(List<SearchApiObject> companies) {
         this.companies = companies;
     }
 

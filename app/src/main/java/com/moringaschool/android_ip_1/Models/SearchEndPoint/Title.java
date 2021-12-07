@@ -1,4 +1,3 @@
-
 package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 
 import com.google.gson.annotations.Expose;
