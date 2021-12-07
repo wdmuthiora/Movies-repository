@@ -29,14 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-//        if(userName.getText().toString().isEmpty()){
-//            startBtn.setVisibility(View.GONE);
-//            welcomeTxt.setVisibility(View.GONE);
-//        }else{
-//            startBtn.setVisibility(View.VISIBLE);
-//            welcomeTxt.setVisibility(View.VISIBLE);
-//        }
-
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 //capture user input
                 String inputUserName = userName.getText().toString();
 
-                Intent intent=new Intent(MainActivity.this, MainActivity2.class);
+                Intent intent=new Intent(MainActivity.this, MainActivity3.class);
                 //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);
                 startActivity(intent);

@@ -19,12 +19,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    @BindView(R.id.profileGreeting)
-    TextView profileGreeting;
-    @BindView(R.id.searchBtn)
     ConstraintLayout searchBtn;
-    @BindView(R.id.findSomething)
-    TextInputEditText findSomething;
     @BindView(R.id.homeBtn)
     LinearLayout homeBtn;
 
@@ -36,19 +31,6 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         ButterKnife.bind(this);
-
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //capture user input
-                String query = findSomething.getText().toString();
-
-                Intent intent=new Intent(MainActivity2.this, MainActivity3.class);
-                //pass the captured input to the next Activity
-                intent.putExtra("query", query);
-                startActivity(intent);
-            }
-        });
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +44,7 @@ public class MainActivity2 extends AppCompatActivity {
         Intent intent = getIntent();
         String inputUserName = intent.getStringExtra("inputUserName");
 
-        profileGreeting.setText("Hi " + inputUserName);
+//        profileGreeting.setText("Hi " + inputUserName);
         Log.d("MainActivity2", "In the onCreate method!");
 
         String.format("Welcome back, Kiongoss %s", inputUserName);
