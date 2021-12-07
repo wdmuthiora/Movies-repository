@@ -1,5 +1,5 @@
 
-package com.moringaschool.android_ip_1.Models;
+package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

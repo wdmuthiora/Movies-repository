@@ -22,6 +22,10 @@ android {
         }
     }
 
+    buildTypes.each{
+        it.buildConfigField 'String', 'IMDB_API',IMDB_Api_Key
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

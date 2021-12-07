@@ -1,17 +1,17 @@
 
-package com.moringaschool.android_ip_1.Models;
+package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Company {
+public class Title {
 
     @SerializedName("title")
     @Expose
     private String title;
     @SerializedName("image")
     @Expose
-    private Object image;
+    private String image;
     @SerializedName("id")
     @Expose
     private String id;
@@ -20,7 +20,7 @@ public class Company {
      * No args constructor for use in serialization
      * 
      */
-    public Company() {
+    public Title() {
     }
 
     /**
@@ -29,7 +29,7 @@ public class Company {
      * @param id
      * @param title
      */
-    public Company(String title, Object image, String id) {
+    public Title(String title, String image, String id) {
         super();
         this.title = title;
         this.image = image;
@@ -44,11 +44,11 @@ public class Company {
         this.title = title;
     }
 
-    public Object getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Object image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
