@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -44,7 +45,7 @@
                         android:id="@+id/tvMovieReleaseYear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Movie release year"
+                        android:text="Release year"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:padding="8dp"
@@ -55,12 +56,40 @@
                         android:id="@+id/tvMovieRating"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Movie rating"
+                        android:text="Rating"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:padding="8dp"
                         android:textColor="@color/white"
                         android:textAlignment="center"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/ivMoviePoster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tvMovieDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
