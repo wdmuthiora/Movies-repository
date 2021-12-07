@@ -1,13 +1,16 @@
 package com.moringaschool.android_ip_1.UI;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
     @BindView(R.id.tvProfileGreeting) TextView tvProfileGreeting;
     @BindView(R.id.svSearchView) SearchView svSearchView;
     @BindView(R.id.rvRecyclerView) RecyclerView rvRecyclerView;
+    @BindView(R.id.cvResultsDisplay) CardView cvResultsDisplay;
 
     HomeRecyclerAdapter adapter;
 
@@ -43,7 +47,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         Intent intent = getIntent();
         String inputUserName = intent.getStringExtra("inputUserName");
 
-        Toast.makeText(MainActivity3.this, inputUserName, Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity3.this, "What did the Doctor say to the midget in the waiting room? ", Toast.LENGTH_LONG).show();
         tvProfileGreeting.setText("Welcome back, Kiongoss "+inputUserName);
 
         dialog=new ProgressDialog(this);
@@ -55,7 +59,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                dialog.setTitle("Please wait.."); //show this while waiting. Be sure to dismiss() after
+                dialog.setTitle("Wait for it..."); //show this while waiting. Be sure to dismiss() after
                 dialog.show();
                 manager.searchMovies(listener,query);  //call api, and search for this "query"
                 return true;
@@ -79,10 +83,15 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
             dialog.dismiss();
 
             if(response==null){
-                Toast.makeText(MainActivity3.this, "No data available", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(MainActivity3.this, "You caught us. No data available", Toast.LENGTH_SHORT).show();
                 return; //to get out of this.
+
             }
+
             showResult(response);
+            showRecyclerView();
+
         }
 
         @Override
@@ -109,6 +118,10 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
 
         startActivity(new Intent(MainActivity3.this, DetailsActivity.class).putExtra("movie_id", id)); //pass id to the DetailsActivity
 
+    }
+
+    private void showRecyclerView() {
+        cvResultsDisplay.setVisibility(View.VISIBLE);
     }
 
 }

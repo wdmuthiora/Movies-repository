@@ -19,9 +19,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    @BindView(R.id.homeBtn)
-    LinearLayout homeBtn;
-
+    @BindView(R.id.homeBtn) LinearLayout homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

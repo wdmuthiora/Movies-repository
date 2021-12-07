@@ -1,6 +1,6 @@
-# ANDROID IP 1
+# ANDROID IP 2
 
-This is an Android Application that allows a user to search for cartoons.
+This is an Android Application that allows a user to search for Movies and their details, via the IMDB - Internet Movie Database API.
 
 ## Project Setup Instructions
 
@@ -22,6 +22,8 @@ This is an Android Application that allows a user to search for cartoons.
 - Robolectics
 - Espresso
 - Junit
+- Retrofit
+- Picasso
 
 ## Want to contribute? Great!
 

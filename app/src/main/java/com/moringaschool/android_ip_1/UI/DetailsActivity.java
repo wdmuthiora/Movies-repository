@@ -34,8 +34,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
         ButterKnife.bind(this);
+
+        Toast.makeText(DetailsActivity.this, "You're going to have to be a little patient", Toast.LENGTH_SHORT).show();
 
         manager=new RequestManager(this);
 
@@ -57,7 +58,7 @@ public class DetailsActivity extends AppCompatActivity {
             dialog.dismiss();
             if(response.equals(null)){
 
-                Toast.makeText(DetailsActivity.this, "Could not retrieve data. Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailsActivity.this, "You caught us. No data available.", Toast.LENGTH_SHORT).show();
                 return; // to get out of this condition.
             }
 
@@ -68,7 +69,7 @@ public class DetailsActivity extends AppCompatActivity {
         public void onError(String message) {
 
             dialog.dismiss();
-            Toast.makeText(DetailsActivity.this, "Error.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailsActivity.this, "An error occurred.", Toast.LENGTH_SHORT).show();
 
         }
 
