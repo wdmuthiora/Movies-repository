@@ -45,7 +45,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         svSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  //set listener to the search field.
             @Override
             public boolean onQueryTextSubmit(String query) {
-                dialog.setTitle("Please wait..");
+                dialog.setTitle("Please wait.."); //show this while waiting. Be sure to dismiss() after
                 dialog.show();
                 manager.searchMovies(listener,query);  //call api, and search for this "query"
                 return true;
@@ -69,7 +69,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
 
             if(response==null){
                 Toast.makeText(MainActivity3.this, "No data available", Toast.LENGTH_SHORT).show();
-                return;
+                return; //to get out of this.
             }
             showResult(response);
         }
@@ -94,7 +94,7 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
     @Override
     public void onMovieClicked(String id) {
 
-        startActivity(new Intent(MainActivity3.this, DetailsActivity.class).putExtra("movieId", id));
+        startActivity(new Intent(MainActivity3.this, DetailsActivity.class).putExtra("movie_id", id)); //pass id to the DetailsActivity
 
     }
 
