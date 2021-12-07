@@ -32,21 +32,25 @@
                     android:id="@+id/profileGreeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
+                    android:layout_marginEnd="165dp"
                     android:text="Hi Kiongoss"
                     android:textColor="#ff3d00"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="32dp" />
+                    app:layout_constraintEnd_toStartOf="@+id/profilePicture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/profilePicture"
                     android:layout_width="0dp"
                     android:layout_height="59dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/profileGreeting"
-                    app:srcCompat="@drawable/profile"
-                    tools:layout_editor_absoluteX="306dp" />
+                    app:srcCompat="@drawable/profile" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/search"
@@ -74,57 +78,9 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/searchBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/orange_button_background">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Search"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </LinearLayout>
     </ScrollView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/svSearchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            app:iconifiedByDefault="false"
-            app:queryHint="Search movies...">
-
-        </androidx.appcompat.widget.SearchView>
-
-    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
