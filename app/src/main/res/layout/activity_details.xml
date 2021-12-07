@@ -13,99 +13,87 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="8dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="8dp"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/orange"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="@color/orange">
+                app:cardElevation="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvMovieName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="8dp"
                         android:text="Movie name"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
                         android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="@color/white"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:id="@+id/tvMovieReleaseYear"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Release year"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="@color/white"
-                        android:textAlignment="center"/>
-
-                    <TextView
-                        android:id="@+id/tvMovieRating"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Rating"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="@color/white"
-                        android:textAlignment="center"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvMovieLength"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Run time"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
                         android:padding="8dp"
+                        android:text="Run time"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textAlignment="center"/>
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvMovieRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Rating"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@color/orange"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvMovieReleaseYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Release year"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/ivMoviePoster"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:paddingStart="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="8dp" />
 
                     <TextView
                         android:id="@+id/tvMovieDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
                         android:text="Description"
-                        android:textStyle="italic"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textStyle="italic" />
 
                 </LinearLayout>
 
