@@ -18,6 +18,7 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView (R.id.tvMovieRating) TextView tvMovieRating;
     @BindView (R.id.tvMovieDescription) TextView tvMovieDescription;
     @BindView(R.id.ivMoviePoster) ImageView ivMoviePoster;
+    @BindView(R.id.tvMovieLength) TextView tvMovieLength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MovieIMDBDetails {
+public class DetailApiResponse {
 
     @SerializedName("id")
     @Expose
@@ -44,7 +44,7 @@ public class MovieIMDBDetails {
      * No args constructor for use in serialization
      * 
      */
-    public MovieIMDBDetails() {
+    public DetailApiResponse() {
     }
 
     /**
@@ -61,7 +61,7 @@ public class MovieIMDBDetails {
      * @param title
      * @param poster
      */
-    public MovieIMDBDetails(String id, String title, String year, String length, String rating, String ratingVotes, String poster, String plot, Trailer trailer, List<Cast> cast, List<List<String>> technicalSpecs) {
+    public DetailApiResponse(String id, String title, String year, String length, String rating, String ratingVotes, String poster, String plot, Trailer trailer, List<Cast> cast, List<List<String>> technicalSpecs) {
         super();
         this.id = id;
         this.title = title;

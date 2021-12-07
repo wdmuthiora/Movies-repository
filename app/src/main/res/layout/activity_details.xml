@@ -65,6 +65,17 @@
                         android:textColor="@color/white"
                         android:textAlignment="center"/>
 
+                    <TextView
+                        android:id="@+id/tvMovieLength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Run time"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"/>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

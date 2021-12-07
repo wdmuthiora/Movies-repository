@@ -44,4 +44,27 @@ public class RequestManager{
 
     }
 
+    public void searchMovieDetails(OnSearchApiListener listener, String movie_name){
+
+        GetMovies getMovies=retrofit.create(GetMovies.class);
+        Call<SearchApiResponse> call = getMovies.callMovies(movie_name);
+
+        call.enqueue(new Callback<SearchApiResponse>() {
+            @Override
+            public void onResponse(Call<SearchApiResponse> call, Response<SearchApiResponse> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(context, "Something went wrong. Please check you connection and try again.", Toast.LENGTH_SHORT).show();
+                }
+                listener.onResponse(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<SearchApiResponse> call, Throwable t) {
+                listener.onError(t.getMessage()); //get message from throwable.
+            }
+        });
+
+    }
+
+
 }
