@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.UI.MainActivity">
+    tools:context=".UI.MainActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -30,7 +30,8 @@
         app:layout_constraintBottom_toTopOf="@+id/welcomeTxt"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/welcomeTxt"
