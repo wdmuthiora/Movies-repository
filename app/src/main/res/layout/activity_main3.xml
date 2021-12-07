@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/profileGreeting"
+                    android:id="@+id/tvProfileGreeting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@
                     android:layout_height="59dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/profileGreeting"
+                    app:layout_constraintTop_toTopOf="@+id/tvProfileGreeting"
                     app:srcCompat="@drawable/profile" />
 
                 <androidx.cardview.widget.CardView
@@ -61,7 +61,7 @@
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="@+id/profilePicture"
-                    app:layout_constraintStart_toStartOf="@+id/profileGreeting"
+                    app:layout_constraintStart_toStartOf="@+id/tvProfileGreeting"
                     app:layout_constraintTop_toBottomOf="@+id/profilePicture">
 
                     <androidx.appcompat.widget.SearchView

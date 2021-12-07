@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moringaschool.android_ip_1.Adapter.HomeRecyclerAdapter;
@@ -21,6 +22,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity3 extends AppCompatActivity implements OnMovieClickListener {
 
+    @BindView(R.id.tvProfileGreeting) TextView tvProfileGreeting;
     @BindView(R.id.svSearchView) SearchView svSearchView;
     @BindView(R.id.rvRecyclerView) RecyclerView rvRecyclerView;
 
@@ -37,6 +39,12 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         setContentView(R.layout.activity_main3);
 
         ButterKnife.bind(this);
+
+        Intent intent = getIntent();
+        String inputUserName = intent.getStringExtra("inputUserName");
+
+        Toast.makeText(MainActivity3.this, inputUserName, Toast.LENGTH_LONG).show();
+        tvProfileGreeting.setText("Welcome back, Kiongoss "+inputUserName);
 
         dialog=new ProgressDialog(this);
 

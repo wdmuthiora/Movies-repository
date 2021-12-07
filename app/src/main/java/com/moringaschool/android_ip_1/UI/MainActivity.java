@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 String inputUserName = userName.getText().toString();
 
                 Intent intent=new Intent(MainActivity.this, MainActivity3.class);
+
                 //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);
                 startActivity(intent);
