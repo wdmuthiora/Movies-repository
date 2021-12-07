@@ -44,14 +44,16 @@ public class DetailsActivity extends AppCompatActivity {
         manager.searchMovieDetails(listener, movie_id); //use the received id
 
         dialog = new ProgressDialog(this);
-        dialog.setTitle("Please wait."); //show this while loading. Be sure to dismiss() after.
+        dialog.setTitle("I'm on it..."); //show this while loading. Be sure to dismiss() after.
         dialog.show();
 
     }
 
     private OnDetailsApiListener listener = new OnDetailsApiListener() {
+
         @Override
         public void onResponse(DetailApiResponse response) {
+
             dialog.dismiss();
             if(response.equals(null)){
 
@@ -64,8 +66,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         @Override
         public void onError(String message) {
+
             dialog.dismiss();
             Toast.makeText(DetailsActivity.this, "Error.", Toast.LENGTH_SHORT).show();
+
         }
 
     };

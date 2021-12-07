@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         startBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);
                 startActivity(intent);
+
             }
+
         });
     }
 }

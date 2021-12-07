@@ -20,7 +20,9 @@ public class RequestManager{
     Retrofit retrofit= new Retrofit.Builder().baseUrl(Constants.IMDB_BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
     public RequestManager(Context context) {
+
         this.context = context;
+
     }
 
     public void searchMovies(OnSearchApiListener listener, String movie_name){
@@ -30,18 +32,27 @@ public class RequestManager{
         Call<SearchApiResponse> call = getMovies.callMovies(movie_name);
 
         call.enqueue(new Callback<SearchApiResponse>() {
+
             @Override
             public void onResponse(Call<SearchApiResponse> call, Response<SearchApiResponse> response) {
+
                if(!response.isSuccessful()){
+
                    Toast.makeText(context, "Something went wrong. Please check you connection and try again.", Toast.LENGTH_SHORT).show();
+
                }
+
                listener.onResponse(response.body());
+
             }
 
             @Override
             public void onFailure(Call<SearchApiResponse> call, Throwable t) {
+
                 listener.onError(t.getMessage()); //get message from throwable.
+
             }
+
         });
 
     }
@@ -56,15 +67,20 @@ public class RequestManager{
 
             @Override
             public void onResponse(Call<DetailApiResponse> call, Response<DetailApiResponse> response) {
+
                 if(!response.isSuccessful()){
                     Toast.makeText(context, "Something went wrong. Please check you connection and try again.", Toast.LENGTH_SHORT).show();
+
                 }
                 listener.onResponse(response.body());
+
             }
 
             @Override
             public void onFailure(Call<DetailApiResponse> call, Throwable t) {
+
                 listener.onError(t.getMessage()); //get message from throwable.
+
             }
         });
 

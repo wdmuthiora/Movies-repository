@@ -29,9 +29,11 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
     OnMovieClickListener listener;
 
     public HomeRecyclerAdapter(Context context, List<SearchArrayObject> list, OnMovieClickListener listener) {
+
         this.context = context;
         this.list = list;
         this.listener = listener;
+
     }
 
     @NonNull
@@ -53,7 +55,9 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
 
             @Override
             public void onClick(View v) {
+
                 listener.onMovieClicked(list.get(position).getId()); //defined in the interface.
+
             }
 
         });
@@ -61,7 +65,9 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
 
     @Override
     public int getItemCount() {
+
         return list.size();
+
     }
 }
 
@@ -74,8 +80,10 @@ class HomeViewHolder extends RecyclerView.ViewHolder{
 
     //constructor matching super-class.
     public HomeViewHolder(@NonNull View itemView) {
+
         super(itemView);
         ButterKnife.bind(this,itemView);
+
     }
 
 }

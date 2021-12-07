@@ -51,12 +51,15 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
         manager=new RequestManager(this); //Network
 
         svSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  //set listener to the search field.
+
             @Override
             public boolean onQueryTextSubmit(String query) {
+
                 dialog.setTitle("Please wait.."); //show this while waiting. Be sure to dismiss() after
                 dialog.show();
                 manager.searchMovies(listener,query);  //call api, and search for this "query"
                 return true;
+
             }
 
             @Override
@@ -84,8 +87,10 @@ public class MainActivity3 extends AppCompatActivity implements OnMovieClickList
 
         @Override
         public void onError(String message) {
+
             dialog.dismiss();
             Toast.makeText(MainActivity3.this, "An error occurred", Toast.LENGTH_SHORT).show();
+
         }
 
     };
