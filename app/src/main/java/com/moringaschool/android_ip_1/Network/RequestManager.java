@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.widget.Toast;
 
 import com.moringaschool.android_ip_1.Constants;
+import com.moringaschool.android_ip_1.Models.FilmEndPoint.DetailApiResponse;
 import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 
 import retrofit2.Call;
@@ -25,6 +26,7 @@ public class RequestManager{
     public void searchMovies(OnSearchApiListener listener, String movie_name){
 
         GetMovies getMovies=retrofit.create(GetMovies.class);
+
         Call<SearchApiResponse> call = getMovies.callMovies(movie_name);
 
         call.enqueue(new Callback<SearchApiResponse>() {
@@ -44,14 +46,16 @@ public class RequestManager{
 
     }
 
-    public void searchMovieDetails(OnSearchApiListener listener, String movie_name){
+    public void searchMovieDetails(OnDetailsApiListener listener, String movie_id){
 
-        GetMovies getMovies=retrofit.create(GetMovies.class);
-        Call<SearchApiResponse> call = getMovies.callMovies(movie_name);
+        GetMovies.GetMovieDetails getMovieDetails = retrofit.create(GetMovies.GetMovieDetails.class);
 
-        call.enqueue(new Callback<SearchApiResponse>() {
+        Call<DetailApiResponse> call = getMovieDetails.callMovieDetails(movie_id);
+
+        call.enqueue(new Callback<DetailApiResponse>() {
+
             @Override
-            public void onResponse(Call<SearchApiResponse> call, Response<SearchApiResponse> response) {
+            public void onResponse(Call<DetailApiResponse> call, Response<DetailApiResponse> response) {
                 if(!response.isSuccessful()){
                     Toast.makeText(context, "Something went wrong. Please check you connection and try again.", Toast.LENGTH_SHORT).show();
                 }
@@ -59,12 +63,11 @@ public class RequestManager{
             }
 
             @Override
-            public void onFailure(Call<SearchApiResponse> call, Throwable t) {
+            public void onFailure(Call<DetailApiResponse> call, Throwable t) {
                 listener.onError(t.getMessage()); //get message from throwable.
             }
         });
 
     }
-
 
 }

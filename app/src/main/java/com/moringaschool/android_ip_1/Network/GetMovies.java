@@ -1,5 +1,6 @@
 package com.moringaschool.android_ip_1.Network;
 
+import com.moringaschool.android_ip_1.Models.FilmEndPoint.DetailApiResponse;
 import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 
 import retrofit2.Call;
@@ -34,10 +35,11 @@ public interface GetMovies {
 
         //Endpoint.
         @GET("film/{movie_id}") //{movie_id} is a placeholder. the user supplies the query parameter
-        Call<SearchApiResponse> callMovieDetails(
+        Call<DetailApiResponse> callMovieDetails(
                 @Path("movie_id") String movie_id //Replace movie_name with the supplied movie_name in url
         );
 
 
     }
+
 }

@@ -46,6 +46,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
     public void onBindViewHolder(@NonNull HomeViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.tvViewMovie.setText(list.get(position).getTitle());
+        holder.tvViewMovie.setSelected(true); //horizontal scrolling thingy
         Picasso.get().load(list.get(position).getImage()).into(holder.ivPoster);
 
         holder.cvHomeContainer.setOnClickListener(new View.OnClickListener() {  //set onClickLister to each movie inside our RecyclerView
