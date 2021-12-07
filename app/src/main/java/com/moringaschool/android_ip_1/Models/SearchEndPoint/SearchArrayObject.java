@@ -1,6 +1,6 @@
 package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 
-public class SearchApiObject  {
+public class SearchArrayObject  {
 
     String title = "";
     String image = "";
