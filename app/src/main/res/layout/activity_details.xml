@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.DetailsActivity"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp"
+                android:padding="8dp"
+                app:cardBackgroundColor="@color/orange">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvMovieName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Movie name"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/tvMovieReleaseYear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Movie release year"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/tvMovieRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Movie rating"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

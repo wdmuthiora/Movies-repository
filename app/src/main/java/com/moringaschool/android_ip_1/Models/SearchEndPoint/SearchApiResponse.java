@@ -8,13 +8,13 @@ public class SearchApiResponse {
 
     @SerializedName("titles")
     @Expose
-    private List<SearchApiObject> titles = null;
+    private List<SearchArrayObject> titles = null;
     @SerializedName("names")
     @Expose
-    private List<SearchApiObject> names = null;
+    private List<SearchArrayObject> names = null;
     @SerializedName("companies")
     @Expose
-    private List<SearchApiObject> companies = null;
+    private List<SearchArrayObject> companies = null;
 
     /**
      * No args constructor for use in serialization
@@ -29,34 +29,34 @@ public class SearchApiResponse {
      * @param names
      * @param titles
      */
-    public SearchApiResponse(List<SearchApiObject> titles, List<SearchApiObject> names, List<SearchApiObject> companies) {
+    public SearchApiResponse(List<SearchArrayObject> titles, List<SearchArrayObject> names, List<SearchArrayObject> companies) {
         super();
         this.titles = titles;
         this.names = names;
         this.companies = companies;
     }
 
-    public List<SearchApiObject> getTitles() {
+    public List<SearchArrayObject> getTitles() {
         return titles;
     }
 
-    public void setTitles(List<SearchApiObject> titles) {
+    public void setTitles(List<SearchArrayObject> titles) {
         this.titles = titles;
     }
 
-    public List<SearchApiObject> getNames() {
+    public List<SearchArrayObject> getNames() {
         return names;
     }
 
-    public void setNames(List<SearchApiObject> names) {
+    public void setNames(List<SearchArrayObject> names) {
         this.names = names;
     }
 
-    public List<SearchApiObject> getCompanies() {
+    public List<SearchArrayObject> getCompanies() {
         return companies;
     }
 
-    public void setCompanies(List<SearchApiObject> companies) {
+    public void setCompanies(List<SearchArrayObject> companies) {
         this.companies = companies;
     }
 

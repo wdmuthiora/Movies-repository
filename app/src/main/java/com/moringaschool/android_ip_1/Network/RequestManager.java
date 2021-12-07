@@ -14,6 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RequestManager{
+
     Context context;
     Retrofit retrofit= new Retrofit.Builder().baseUrl(Constants.IMDB_BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -22,6 +23,7 @@ public class RequestManager{
     }
 
     public void searchMovies(OnSearchApiListener listener, String movie_name){
+
         GetMovies getMovies=retrofit.create(GetMovies.class);
         Call<SearchApiResponse> call = getMovies.callMovies(movie_name);
 
@@ -39,7 +41,7 @@ public class RequestManager{
                 listener.onError(t.getMessage()); //get message from throwable.
             }
         });
-    }
 
+    }
 
 }

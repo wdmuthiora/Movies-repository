@@ -43,7 +43,7 @@ public class MainActivity2 extends AppCompatActivity {
                 //capture user input
                 String query = findSomething.getText().toString();
 
-                Intent intent=new Intent(MainActivity2.this, ArticleList.class);
+                Intent intent=new Intent(MainActivity2.this, MainActivity3.class);
                 //pass the captured input to the next Activity
                 intent.putExtra("query", query);
                 startActivity(intent);

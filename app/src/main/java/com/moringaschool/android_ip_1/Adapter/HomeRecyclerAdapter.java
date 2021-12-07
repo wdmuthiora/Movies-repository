@@ -1,5 +1,6 @@
 package com.moringaschool.android_ip_1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,14 +37,25 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
     @NonNull
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         return new HomeViewHolder(LayoutInflater.from(context).inflate(R.layout.home_movies_list,parent, false));
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
         holder.tvViewMovie.setText(list.get(position).getTitle());
         Picasso.get().load(list.get(position).getImage()).into(holder.ivPoster);
+
+        holder.cvHomeContainer.setOnClickListener(new View.OnClickListener() {  //set onClickLister to each movie inside our RecyclerView
+
+            @Override
+            public void onClick(View v) {
+                listener.onMovieClicked(list.get(position).getId()); //defined in the interface.
+            }
+
+        });
     }
 
     @Override
@@ -54,6 +66,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
 
 //ViewHolder.
 class HomeViewHolder extends RecyclerView.ViewHolder{
+
     @BindView(R.id.ivPoster) ImageView ivPoster;
     @BindView(R.id.tvViewMovie) TextView tvViewMovie;
     @BindView(R.id.cvHomeContainer) CardView cvHomeContainer;

@@ -8,6 +8,7 @@
     app:cardBackgroundColor="@color/black"
     android:layout_margin="8dp"
     android:id="@+id/cvHomeContainer">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

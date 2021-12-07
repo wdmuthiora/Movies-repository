@@ -14,7 +14,7 @@
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
-        app:cardBackgroundColor="@color/yellow">
+        app:cardBackgroundColor="@color/white">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/svSearchView"
@@ -31,7 +31,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/yellow"
+        app:cardBackgroundColor="@color/orange"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
