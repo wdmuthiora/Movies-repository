@@ -3,7 +3,9 @@ package com.moringaschool.android_ip_1.Models.FilmEndPoint;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.parceler.Parcel;
 
+@Parcel
 public class Trailer {
 
     @SerializedName("id")

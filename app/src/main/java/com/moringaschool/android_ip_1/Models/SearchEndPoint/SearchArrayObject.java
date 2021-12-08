@@ -1,5 +1,7 @@
 package com.moringaschool.android_ip_1.Models.SearchEndPoint;
+import org.parceler.Parcel;
 
+@Parcel
 public class SearchArrayObject  {
 
     String title = "";

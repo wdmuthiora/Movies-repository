@@ -3,7 +3,9 @@ package com.moringaschool.android_ip_1.Models.SearchEndPoint;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.parceler.Parcel;
 
+@Parcel
 public class SearchApiResponse {
 
     @SerializedName("titles")
