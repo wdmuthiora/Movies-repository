@@ -86,16 +86,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardBackgroundColor="@color/orange"
+        app:cardBackgroundColor="@android:color/darker_gray"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        app:cardElevation="16dp"
         tools:visibility="invisible">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            android:paddingTop="4dp" />
 
     </androidx.cardview.widget.CardView>
 

@@ -35,7 +35,11 @@
                         android:id="@+id/tvMovieName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:elevation="4dp"
                         android:padding="8dp"
+
+                        android:shadowColor="@color/white"
                         android:text="Movie name"
                         android:textAlignment="center"
                         android:textColor="@color/green"
@@ -83,6 +87,18 @@
                         android:paddingStart="8dp"
                         android:paddingTop="8dp"
                         android:paddingEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvTrailerLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="Trailer"
+                        android:padding="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:textColor="@color/design_default_color_primary_variant"/>
 
                     <TextView
                         android:id="@+id/tvMovieDescription"

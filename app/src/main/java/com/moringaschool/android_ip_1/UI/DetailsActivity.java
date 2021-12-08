@@ -3,7 +3,10 @@ package com.moringaschool.android_ip_1.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
 public class DetailsActivity extends AppCompatActivity {
 
     RequestManager manager;
-    ProgressDialog dialog;
+    ProgressDialog dialog; //android popup thingy
 
     @BindView (R.id.tvMovieName) TextView tvMovieName;
     @BindView (R.id.tvMovieReleaseYear) TextView tvMovieReleaseYear;
@@ -28,6 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView (R.id.tvMovieDescription) TextView tvMovieDescription;
     @BindView(R.id.ivMoviePoster) ImageView ivMoviePoster;
     @BindView(R.id.tvMovieLength) TextView tvMovieLength;
+    @BindView(R.id.tvTrailerLink) TextView tvTrailerLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class DetailsActivity extends AppCompatActivity {
         public void onResponse(DetailApiResponse response) {
 
             dialog.dismiss();
+
             if(response.equals(null)){
 
                 Toast.makeText(DetailsActivity.this, "You caught us. No data available.", Toast.LENGTH_SHORT).show();
@@ -83,6 +88,18 @@ public class DetailsActivity extends AppCompatActivity {
         tvMovieLength.setText("Length: " +response.getLength());
         Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url
         tvMovieDescription.setText(response.getPlot());
+
+        tvTrailerLink.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(response.getTrailer().getLink().toString()));
+                startActivity(webIntent);
+
+            }
+
+        });
 
     }
 
