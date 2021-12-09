@@ -9,25 +9,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 import com.moringaschool.android_ip_1.R;
+
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MovieCastFragment extends Fragment {
+
     @BindView(R.id.rvCastList) RecyclerView rvCastList;
 
+    private SearchApiResponse mResponse;
+
+
     public MovieCastFragment() {
-        // Required empty public constructor
     }
 
-    public static MovieCastFragment newInstance(String param1, String param2) {
+    public static MovieCastFragment newInstance(SearchApiResponse response) {
 
-        MovieCastFragment fragment = new MovieCastFragment();
+        MovieCastFragment movieCastFragment = new MovieCastFragment();
         Bundle args = new Bundle();
+        args.putParcelable("response", Parcels.wrap(response));
+        movieCastFragment.setArguments(args);
+        return movieCastFragment;
 
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -35,14 +42,15 @@ public class MovieCastFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            mResponse = Parcels.unwrap(getArguments().getParcelable("response"));
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.fragment_movie_cast, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie_cast, container, false);
         ButterKnife.bind(this,view);
 
         return view;
