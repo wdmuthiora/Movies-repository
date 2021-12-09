@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView (R.id.tvMovieDescription) TextView tvMovieDescription;
     @BindView(R.id.ivMoviePoster) ImageView ivMoviePoster;
     @BindView(R.id.tvMovieLength) TextView tvMovieLength;
-    @BindView(R.id.tvTrailerLink) TextView tvTrailerLink;
+    @BindView(R.id.btnWatchTrailer) Button btnWatchTrailer;
+    @BindView(R.id.btnCast) Button btnCast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         Toast.makeText(DetailsActivity.this, "You're going to have to be a little patient", Toast.LENGTH_SHORT).show();
 
-        manager=new RequestManager(this);
+        manager=new RequestManager(this); //Call the api
 
-        String movie_id = getIntent().getStringExtra("movie_id"); //retrieve movie id from the MainActivity3. NB. Call api after fetching movie_id.
+        String movie_id = getIntent().getStringExtra("movie_id"); //retrieve movie id from the MovieSearchActivity. NB. Call api after fetching movie_id.
 
         manager.searchMovieDetails(listener, movie_id); //use the received id
 
@@ -88,8 +90,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvMovieLength.setText("Length: " +response.getLength());
         Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url
         tvMovieDescription.setText(response.getPlot());
-
-        tvTrailerLink.setOnClickListener(new View.OnClickListener() {
+        btnWatchTrailer.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 

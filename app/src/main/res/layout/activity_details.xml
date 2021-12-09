@@ -89,18 +89,6 @@
                         android:paddingEnd="8dp" />
 
                     <TextView
-                        android:id="@+id/tvTrailerLink"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
-                        android:text="Trailer"
-                        android:padding="8dp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingBottom="8dp"
-                        android:textColor="@color/design_default_color_primary_variant"/>
-
-                    <TextView
                         android:id="@+id/tvMovieDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -111,6 +99,30 @@
                         android:text="Description"
                         android:textColor="@color/green"
                         android:textStyle="italic" />
+
+                    <Button
+                        android:id="@+id/btnCast"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="0.4"
+                        android:elevation="8dp"
+                        android:gravity="center_horizontal"
+                        android:text="Cast"
+                        android:textColor="@color/orange"
+                        app:cornerRadius="8dp" />
+
+                    <Button
+                        android:id="@+id/btnWatchTrailer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="0.4"
+                        android:text="Watch trailer here"
+                        android:textColor="@color/orange"
+                        app:cornerRadius="8dp" />
 
                 </LinearLayout>
 

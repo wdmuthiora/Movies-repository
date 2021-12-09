@@ -55,12 +55,15 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
         svSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  //set listener to the search field.
 
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String query) { //pass this query to Request manager
+
                 Toast.makeText(MovieSearchActivity.this, "What did the Doctor say to the midget in the waiting room? ", Toast.LENGTH_LONG).show();
 
                 dialog.setTitle("Wait for it..."); //show this while waiting. Be sure to dismiss() after
                 dialog.show();
+
                 manager.searchMovies(listener,query);  //call api, and search for this "query"
+
                 return true;
 
             }
@@ -74,16 +77,17 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
     }
 
-    private final OnSearchApiListener listener=new OnSearchApiListener() {
+    private final OnSearchApiListener listener=new OnSearchApiListener() { //listen out for network results from api
 
         @Override
         public void onResponse(SearchApiResponse response) {
 
             dialog.dismiss();
 
-            if(response==null){
+            if(response==null){ //If there are no results.
 
                 Toast.makeText(MovieSearchActivity.this, "You caught us. No data available", Toast.LENGTH_SHORT).show();
+
                 return; //to get out of this.
 
             }
@@ -105,7 +109,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
     private void showResult(SearchApiResponse response) {
 
-        rvRecyclerView.setHasFixedSize(true);
+        rvRecyclerView.setHasFixedSize(true); //Do not adapt size to accommodate different size results
         rvRecyclerView.setLayoutManager(new GridLayoutManager(MovieSearchActivity.this, 1)); //show 3 items per row
         adapter=new HomeRecyclerAdapter(this, response.getTitles(), this);
         rvRecyclerView.setAdapter(adapter);
