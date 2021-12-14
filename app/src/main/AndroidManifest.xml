@@ -11,37 +11,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Ip_1">
+
         <activity
             android:name=".UI.SignUpActivity"
             android:exported="false" />
+
         <activity
             android:name=".UI.LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+
         <activity
             android:name=".UI.MovieCastActivity"
             android:exported="false" />
+
         <activity
             android:name=".UI.DetailsActivity"
             android:exported="false" />
+
         <activity
             android:name=".UI.MovieSearchActivity"
             android:exported="false" />
+
         <activity
             android:name=".UI.MainActivity2"
             android:exported="false" />
+
         <activity
             android:name=".UI.WelcomeActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>
