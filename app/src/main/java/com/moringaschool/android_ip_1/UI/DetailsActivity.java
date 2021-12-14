@@ -28,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
+
     private List<Cast> mCast;
     private Context mContext;
 

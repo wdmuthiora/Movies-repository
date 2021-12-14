@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.android_ip_1.Adapter.HomeRecyclerAdapter;
 import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 import com.moringaschool.android_ip_1.Network.OnSearchApiListener;
@@ -39,7 +41,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_movie_search);
 
         ButterKnife.bind(this);
 
@@ -125,6 +127,27 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
     private void showRecyclerView() {
         cvResultsDisplay.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_logout) {
+
+            logout();
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+    private void logout() {
+
+        FirebaseAuth.getInstance().signOut();
+
     }
 
 }
