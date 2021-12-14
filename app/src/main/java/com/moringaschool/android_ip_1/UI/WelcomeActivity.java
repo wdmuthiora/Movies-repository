@@ -14,7 +14,7 @@ import com.moringaschool.android_ip_1.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 //LOGIN
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @BindView(R.id.startBtn) ConstraintLayout startBtn;
     @BindView(R.id.userName) TextInputEditText userName;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcome);
 
         ButterKnife.bind(this);
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 //capture user input
                 String inputUserName = userName.getText().toString();
 
-                Intent intent=new Intent(MainActivity.this, MovieSearchActivity.class);
+                Intent intent=new Intent(WelcomeActivity.this, MovieSearchActivity.class);
 
                 //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);

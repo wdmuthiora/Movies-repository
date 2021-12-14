@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.moringaschool.android_ip_1.R;
 
 import butterknife.BindView;
@@ -33,7 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity2.this, MainActivity.class);
+                Intent intent=new Intent(MainActivity2.this, WelcomeActivity.class);
                 startActivity(intent);
             }
 
