@@ -1,5 +1,6 @@
 package com.moringaschool.android_ip_1.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.android_ip_1.R;
 
 import butterknife.BindView;
@@ -21,6 +23,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public static final String TAG = LoginActivity.class.getSimpleName();
 
     private FirebaseAuth firebaseAuth;
+
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;  /* AuthStateListener simply listens for an account being successfully authenticated, or un-authenticated through Firebase. Firebase can also automatically authenticate user accounts upon registration. Therefore, our users can submit the registration form and if their account is created successfully they will be logged in automatically, and this listener will be triggered.*/
 
     @BindView(R.id.tvSignUpName) TextView tvSignUpName;
     @BindView(R.id.tvSignUpEmail) TextView tvSignUpEmail;
@@ -38,7 +42,34 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         ButterKnife.bind(this);
 
+        clSignUpCreateAccount.setOnClickListener(this);
+        tvSignUpSignIn.setOnClickListener(this);
+
         firebaseAuth=FirebaseAuth.getInstance();
+
+        createAuthStateListener();
+
+    }
+
+    private void createAuthStateListener() {
+
+        firebaseAuthListener=new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                final FirebaseUser firebaseUser= firebaseAuth.getCurrentUser();
+
+                if (firebaseUser!=null){
+
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+            }
+        };
 
     }
 
@@ -75,6 +106,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if (task.isSuccessful()){
 
                 Log.d(TAG, "Firebase Authentication is successful.");
+
+                Toast.makeText(SignUpActivity.this, "Firebase Authentication is successful.", Toast.LENGTH_SHORT).show();
+
 
             }else {
 
