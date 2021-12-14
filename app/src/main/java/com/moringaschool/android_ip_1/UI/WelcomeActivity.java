@@ -33,12 +33,9 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //capture user input
                 String inputUserName = userName.getText().toString();
 
                 Intent intent=new Intent(WelcomeActivity.this, LoginActivity.class);
-
-                //pass the captured input to the next Activity
                 intent.putExtra("inputUserName", inputUserName);
                 startActivity(intent);
 

@@ -13,30 +13,6 @@
         android:theme="@style/Theme.Android_Ip_1">
 
         <activity
-            android:name=".UI.SignUpActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".UI.LoginActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".UI.MovieCastActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".UI.DetailsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".UI.MovieSearchActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".UI.MainActivity2"
-            android:exported="false" />
-
-        <activity
             android:name=".UI.WelcomeActivity"
             android:exported="true">
 
@@ -46,6 +22,24 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".UI.SignUpActivity" />
+
+        <activity
+            android:name=".UI.LoginActivity" />
+
+        <activity
+            android:name=".UI.MovieCastActivity" />
+
+        <activity
+            android:name=".UI.DetailsActivity" />
+
+        <activity
+            android:name=".UI.MovieSearchActivity" />
+
+        <activity
+            android:name=".UI.MainActivity2" />
 
     </application>
 

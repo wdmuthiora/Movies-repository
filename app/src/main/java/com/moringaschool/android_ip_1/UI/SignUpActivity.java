@@ -1,5 +1,7 @@
 package com.moringaschool.android_ip_1.UI;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String TAG = LoginActivity.class.getSimpleName();
+//    public static final String TAG = LoginActivity.class.getSimpleName();
 
     private FirebaseAuth firebaseAuth;
 
@@ -32,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.tvSignUpConfirmPassword) TextView tvSignUpConfirmPassword;
     @BindView(R.id.clSignUpCreateAccount) ConstraintLayout clSignUpCreateAccount;
     @BindView(R.id.tvSignUpSignIn) TextView tvSignUpSignIn;
+    @BindView(R.id.pbSignInProgressBar) ProgressBar pbSignInProgressBar;
+    @BindView(R.id.tvLoadingSignUp) TextView tvLoadingSignUp;
 
 
     @Override
@@ -101,12 +106,19 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String password = tvSignUpPassword.getText().toString().trim();
         String confirmPassword = tvSignUpConfirmPassword.getText().toString().trim();
 
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(name);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        if (!validEmail || !validName || !validPassword) return;
+
+        showProgressBar();
+
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, task -> {
 
             if (task.isSuccessful()){
 
                 Log.d(TAG, "Firebase Authentication is successful.");
-
+                hideProgressBar();
                 Toast.makeText(SignUpActivity.this, "Firebase Authentication is successful.", Toast.LENGTH_SHORT).show();
 
 
@@ -131,6 +143,62 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if (firebaseAuthListener != null) {
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
         }
+    }
+
+    private boolean isValidName(String name) {
+
+        if (name.equals("")) {
+
+            tvSignUpName.setError("Please enter your name");
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+    private boolean isValidEmail(String email) {
+
+        boolean isGoodEmail =(email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+
+        if (!isGoodEmail) {
+
+            tvSignUpEmail.setError("Please enter a valid email address");
+            return false;
+
+        }
+        return isGoodEmail;
+
+    }
+
+    private boolean isValidPassword(String password, String confirmPassword) {
+
+        if (password.length() < 6) {
+
+            tvSignUpPassword.setError("Please create a password containing at least 6 characters");
+            return false;
+
+        } else if (!password.equals(confirmPassword)) {
+
+            tvSignUpConfirmPassword.setError("Passwords do not match");
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+    private void showProgressBar() {
+        pbSignInProgressBar.setVisibility(View.VISIBLE);
+        tvLoadingSignUp.setVisibility(View.VISIBLE);
+        tvLoadingSignUp.setText("Give us a second to set up your account.");
+    }
+
+    private void hideProgressBar() {
+        pbSignInProgressBar.setVisibility(View.GONE);
+        tvLoadingSignUp.setVisibility(View.GONE);
     }
 
 }

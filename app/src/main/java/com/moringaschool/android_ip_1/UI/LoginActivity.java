@@ -1,6 +1,7 @@
 package com.moringaschool.android_ip_1.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.tvSignUp) TextView tvSignUp;
+    @BindView(R.id.clContinue) ConstraintLayout clContinue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +27,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
 
         tvSignUp.setOnClickListener(this);
+        clContinue.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
 
-        if (view==tvSignUp){
 
+        if (view==clContinue){
+
+        }
+
+        if (view==tvSignUp){
             Intent intent=new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
-            finish();
-
         }
 
     }

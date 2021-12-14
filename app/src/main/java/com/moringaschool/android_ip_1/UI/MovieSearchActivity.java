@@ -129,6 +129,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
         cvResultsDisplay.setVisibility(View.VISIBLE);
     }
 
+    //Overflow menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -147,6 +148,10 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
     private void logout() {
 
         FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MovieSearchActivity.this, WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
 
     }
 
