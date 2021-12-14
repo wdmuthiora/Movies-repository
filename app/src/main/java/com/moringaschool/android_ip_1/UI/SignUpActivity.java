@@ -119,4 +119,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (firebaseAuthListener != null) {
+            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+        }
+    }
+
 }
