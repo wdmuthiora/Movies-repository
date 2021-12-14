@@ -3,6 +3,7 @@ package com.moringaschool.android_ip_1.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,16 +13,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringaschool.android_ip_1.Models.FilmEndPoint.Cast;
 import com.moringaschool.android_ip_1.Models.FilmEndPoint.DetailApiResponse;
 import com.moringaschool.android_ip_1.Network.OnDetailsApiListener;
 import com.moringaschool.android_ip_1.Network.RequestManager;
 import com.moringaschool.android_ip_1.R;
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcels;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetailsActivity extends AppCompatActivity {
+    private List<Cast> mCast;
+    private Context mContext;
 
     RequestManager manager;
     ProgressDialog dialog; //android popup thingy
@@ -83,13 +91,18 @@ public class DetailsActivity extends AppCompatActivity {
     };
 
     private void showResults(DetailApiResponse response) { //map incoming data from api to elements.
-
+        mCast=response.getCast();
         tvMovieName.setText(response.getTitle());
         tvMovieReleaseYear.setText("Year: "+response.getYear());
         tvMovieRating.setText("Rating: "+response.getRating());
         tvMovieLength.setText("Length: " +response.getLength());
-        Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url
+        try {
+            Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url
+        }catch (Exception e){
+            Toast.makeText(DetailsActivity.this, "There appears to be no movie poster.", Toast.LENGTH_SHORT).show();
+        }
         tvMovieDescription.setText(response.getPlot());
+
         btnWatchTrailer.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -97,6 +110,18 @@ public class DetailsActivity extends AppCompatActivity {
                 Intent webIntent = new Intent(Intent.ACTION_VIEW,
                         Uri.parse(response.getTrailer().getLink().toString()));
                 startActivity(webIntent);
+
+            }
+
+        });
+
+        btnCast.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent intent = new Intent(mContext, MovieCastActivity.class);
+                intent.putExtra("cast", Parcels.wrap(mCast));
+                mContext.startActivity(intent);
 
             }
 

@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.moringaschool.android_ip_1.Models.FilmEndPoint.Cast;
 import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 import com.moringaschool.android_ip_1.R;
 
@@ -19,10 +21,10 @@ import butterknife.ButterKnife;
 
 public class MovieCastFragment extends Fragment {
 
-    @BindView(R.id.rvCastList) RecyclerView rvCastList;
+    @BindView(R.id.tvCharacter) TextView tvCharacter;
+    @BindView(R.id.tvActor) TextView tvActor;
 
-    private SearchApiResponse mResponse;
-
+    private Cast mCast;
 
     public MovieCastFragment() {
     }
@@ -42,7 +44,7 @@ public class MovieCastFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mResponse = Parcels.unwrap(getArguments().getParcelable("response"));
+            mCast = Parcels.unwrap(getArguments().getParcelable("response"));
         }
 
     }
