@@ -14,16 +14,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.moringaschool.android_ip_1.R;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-//    public static final String TAG = LoginActivity.class.getSimpleName();
+    public static final String TAG = LoginActivity.class.getSimpleName();
+
+    private String userName;
 
     private FirebaseAuth firebaseAuth;
 
@@ -35,8 +42,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.tvSignUpConfirmPassword) TextView tvSignUpConfirmPassword;
     @BindView(R.id.clSignUpCreateAccount) ConstraintLayout clSignUpCreateAccount;
     @BindView(R.id.tvSignUpSignIn) TextView tvSignUpSignIn;
-    @BindView(R.id.pbSignInProgressBar) ProgressBar pbSignInProgressBar;
-    @BindView(R.id.tvLoadingSignUp) TextView tvLoadingSignUp;
+//    @BindView(R.id.pbSignInProgressBar) ProgressBar pbSignInProgressBar;
+//    @BindView(R.id.tvLoadingSignUp) TextView tvLoadingSignUp;
 
 
     @Override
@@ -100,6 +107,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private void createNewUser() {
 
+        userName = tvSignUpName.getText().toString().trim();
+
         //capture input from user.
         final String name = tvSignUpName.getText().toString().trim();
         final String email = tvSignUpEmail.getText().toString().trim();
@@ -107,9 +116,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String confirmPassword = tvSignUpConfirmPassword.getText().toString().trim();
 
         boolean validEmail = isValidEmail(email);
-        boolean validName = isValidName(name);
+        boolean validUserName = isValidUserName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
-        if (!validEmail || !validName || !validPassword) return;
+        if (!validEmail || !validUserName || !validPassword) return;
 
         showProgressBar();
 
@@ -118,9 +127,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             if (task.isSuccessful()){
 
                 Log.d(TAG, "Firebase Authentication is successful.");
-                hideProgressBar();
-                Toast.makeText(SignUpActivity.this, "Firebase Authentication is successful.", Toast.LENGTH_SHORT).show();
 
+                hideProgressBar();
+
+                createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
+
+                Toast.makeText(SignUpActivity.this, "Firebase Authentication is successful.", Toast.LENGTH_SHORT).show();
 
             }else {
 
@@ -145,7 +157,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private boolean isValidName(String name) {
+    private boolean isValidUserName(String name) {
 
         if (name.equals("")) {
 
@@ -191,14 +203,51 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void showProgressBar() {
-        pbSignInProgressBar.setVisibility(View.VISIBLE);
-        tvLoadingSignUp.setVisibility(View.VISIBLE);
-        tvLoadingSignUp.setText("Give us a second to set up your account.");
+
+//        pbSignInProgressBar.setVisibility(View.VISIBLE);
+//        tvLoadingSignUp.setVisibility(View.VISIBLE);
+//        tvLoadingSignUp.setText("Give us a second to set up your account.");
+
     }
 
     private void hideProgressBar() {
-        pbSignInProgressBar.setVisibility(View.GONE);
-        tvLoadingSignUp.setVisibility(View.GONE);
+
+//        pbSignInProgressBar.setVisibility(View.GONE);
+//        tvLoadingSignUp.setVisibility(View.GONE);
+
+    }
+
+    private void createFirebaseUserProfile(final FirebaseUser firebaseUser) {
+
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder().setDisplayName(userName).build();
+
+        firebaseUser.updateProfile(addProfileName).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+
+                if (task.isSuccessful()) {
+
+                    Log.d(TAG, Objects.requireNonNull(firebaseUser.getDisplayName()));
+
+                    String inputFirebaseUserName = Objects.requireNonNull(firebaseUser.getDisplayName());
+
+                    Toast.makeText(SignUpActivity.this, "The display name has been set", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(SignUpActivity.this, MovieSearchActivity.class);
+                    intent.putExtra("inputFirebaseUserName", inputFirebaseUserName);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); /*FLAG_ACTIVITY_CLEAR_TASK will cause any existing task that would be associated with the activity to be cleared before the activity is started. This prevents this Activity from being unnecessarily accessed via the system back button. FLAG_ACTIVITY_NEW_TASK will make the activity we are navigating to the start of a brand new task on this history stack.*/
+                    startActivity(intent);
+
+                    finish();
+
+                }
+
+            }
+
+        });
+
     }
 
 }

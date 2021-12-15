@@ -1,5 +1,6 @@
 package com.moringaschool.android_ip_1.UI;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.android_ip_1.Adapter.HomeRecyclerAdapter;
 import com.moringaschool.android_ip_1.Models.SearchEndPoint.SearchApiResponse;
 import com.moringaschool.android_ip_1.Network.OnSearchApiListener;
@@ -25,6 +27,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MovieSearchActivity extends AppCompatActivity implements OnMovieClickListener {
+
+    private FirebaseAuth firebaseAuth;
+
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
     @BindView(R.id.tvProfileGreeting) TextView tvProfileGreeting;
     @BindView(R.id.svSearchView) SearchView svSearchView;
@@ -44,6 +50,29 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
         setContentView(R.layout.activity_movie_search);
 
         ButterKnife.bind(this);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if (user != null) {
+
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+
+                    tvProfileGreeting.setText("Welcome back, Kiongoss " + user.getDisplayName());
+
+
+                } else {
+                }
+
+            }
+
+        };
 
         Intent intent = getIntent();
         String inputUserName = intent.getStringExtra("inputUserName");
@@ -153,6 +182,20 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
         startActivity(intent);
         finish();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseAuth.addAuthStateListener(firebaseAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (firebaseAuthListener != null) {
+            firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+        }
     }
 
 }

@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/tvLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/tvLoginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginEmail" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clContinue"
@@ -101,8 +101,8 @@
         android:layout_marginTop="8dp"
         android:text="Forgot your password?"
         android:textColor="@color/orange"
-        app:layout_constraintEnd_toEndOf="@+id/textInputEditText2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintEnd_toEndOf="@+id/tvLoginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginPassword" />
 
     <TextView
         android:id="@+id/textView5"
