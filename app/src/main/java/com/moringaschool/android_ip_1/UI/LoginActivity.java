@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
+    ProgressDialog progressDialog;
 
     public static final String TAG = LoginActivity.class.getSimpleName();
 
@@ -103,7 +105,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
-        //Login using builtin Firebase method signInWithEmailAndPassword
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Don't go making a cup of coffee just yet..."); //show this while waiting. Be sure to dismiss() after
+        progressDialog.show();
+
+        //Login using built-in Firebase method signInWithEmailAndPassword
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
@@ -112,6 +118,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
+                        progressDialog.dismiss();
+
+
                         if (!task.isSuccessful()) {
 
                             Log.w(TAG, "signInWithEmail", task.getException());
@@ -119,22 +128,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
 
                         }
+
                     }
+
                 });
 
     }
 
     @Override
     public void onStart() {
+
         super.onStart();
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
+
     }
 
     @Override
     public void onStop() {
+
         super.onStop();
+
         if (firebaseAuthListener != null) {
+
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+
         }
+
     }
+
 }

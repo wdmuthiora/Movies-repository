@@ -18,6 +18,8 @@ public class SearchApiResponse {
     @Expose
     private List<SearchArrayObject> companies = null;
 
+    private String pushId;
+
     /**
      * No args constructor for use in serialization
      * 
@@ -36,6 +38,14 @@ public class SearchApiResponse {
         this.titles = titles;
         this.names = names;
         this.companies = companies;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
     public List<SearchArrayObject> getTitles() {

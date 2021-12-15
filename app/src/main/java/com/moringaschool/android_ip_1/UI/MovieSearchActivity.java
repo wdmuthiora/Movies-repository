@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -58,26 +60,26 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-                if (user != null) {
+                if (firebaseUser != null) {
 
-                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                    getSupportActionBar().setTitle("Welcome, " + firebaseUser.getDisplayName());
 
-                    tvProfileGreeting.setText("Welcome back, Kiongoss " + user.getDisplayName());
-
+                    tvProfileGreeting.setText("Welcome back, " + firebaseUser.getDisplayName());
 
                 } else {
+
                 }
 
             }
 
         };
-
-        Intent intent = getIntent();
-        String inputUserName = intent.getStringExtra("inputUserName");
-
-        tvProfileGreeting.setText("Welcome back, Kiongoss "+inputUserName);
+//
+//        Intent intent = getIntent();
+//        String inputUserName = intent.getStringExtra("inputUserName");
+//
+//        tvProfileGreeting.setText("Welcome back, " + inputUserName);
 
         dialog=new ProgressDialog(this);
 
@@ -159,6 +161,16 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
     }
 
     //Overflow menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.overflow_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

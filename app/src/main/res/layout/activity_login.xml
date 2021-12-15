@@ -59,6 +59,7 @@
         android:height="40dp"
         android:background="@color/orange"
         android:hint="Password"
+        android:inputType="textPassword"
         android:padding="8dp"
         android:textColorHint="@color/white"
         android:visibility="visible"
