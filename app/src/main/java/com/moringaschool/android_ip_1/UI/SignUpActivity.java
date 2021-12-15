@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String TAG = LoginActivity.class.getSimpleName();
+    public static final String TAG = SignUpActivity.class.getSimpleName();
 
     private String userName;
 

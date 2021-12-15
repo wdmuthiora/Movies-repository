@@ -13,7 +13,7 @@ import com.moringaschool.android_ip_1.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-//LOGIN
+
 public class WelcomeActivity extends AppCompatActivity {
 
     @BindView(R.id.startBtn) ConstraintLayout startBtn;
