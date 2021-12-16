@@ -64,9 +64,9 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
                 if (firebaseUser != null) {
 
-                    getSupportActionBar().setTitle("Welcome, " + firebaseUser.getDisplayName());
+                    getSupportActionBar().setTitle( firebaseUser.getDisplayName());
 
-                    tvProfileGreeting.setText("Welcome back, " + firebaseUser.getDisplayName());
+                    tvProfileGreeting.setText("Welcome back " + firebaseUser.getDisplayName());
 
                 } else {
 
@@ -88,7 +88,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
         svSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {  //set listener to the search field.
 
             @Override
-            public boolean onQueryTextSubmit(String query) { //pass this query to Request manager
+            public boolean onQueryTextSubmit(String query) { //pass this query (from user) to Request manager
 
                 Toast.makeText(MovieSearchActivity.this, "What did the Doctor say to the midget in the waiting room? ", Toast.LENGTH_LONG).show();
 

@@ -81,7 +81,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if (view==tvSignUp){
-
+            Intent intent=new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         }
 
     }

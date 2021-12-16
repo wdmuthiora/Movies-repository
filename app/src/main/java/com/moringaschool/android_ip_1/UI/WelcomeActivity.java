@@ -14,10 +14,9 @@ import com.moringaschool.android_ip_1.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.startBtn) ConstraintLayout startBtn;
-    @BindView(R.id.userName) TextInputEditText userName;
     @BindView(R.id.welcomeTxt) TextView welcomeTxt;
 
     @Override
@@ -28,19 +27,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        startBtn.setOnClickListener(new View.OnClickListener() {
+        startBtn.setOnClickListener(this);
 
-            @Override
-            public void onClick(View v) {
-
-                String inputUserName = userName.getText().toString();
-
-                Intent intent=new Intent(WelcomeActivity.this, LoginActivity.class);
-                intent.putExtra("inputUserName", inputUserName);
-                startActivity(intent);
-
-            }
-
-        });
     }
+
+    @Override
+    public void onClick(View v) {
+
+        Intent intent=new Intent(WelcomeActivity.this, LoginActivity.class);
+        startActivity(intent);
+
+    }
+
 }

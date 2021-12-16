@@ -20,7 +20,7 @@ public interface GetMovies {
 
     })
 
-    //Endpoints.
+    //Endpoint.
     @GET("search/{movie_name}") //{movie_name} is a placeholder. the user supplies the query parameter
     Call<SearchApiResponse> callMovies(
 

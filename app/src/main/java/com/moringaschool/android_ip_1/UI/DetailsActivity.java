@@ -13,6 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.android_ip_1.Constants;
 import com.moringaschool.android_ip_1.Models.FilmEndPoint.Cast;
 import com.moringaschool.android_ip_1.Models.FilmEndPoint.DetailApiResponse;
 import com.moringaschool.android_ip_1.Network.OnDetailsApiListener;
@@ -32,6 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
     private List<Cast> mCast;
     private Context mContext;
 
+    private DetailApiResponse mResponse;
+
     RequestManager manager;
     ProgressDialog dialog; //android popup thingy
 
@@ -39,10 +46,11 @@ public class DetailsActivity extends AppCompatActivity {
     @BindView (R.id.tvMovieReleaseYear) TextView tvMovieReleaseYear;
     @BindView (R.id.tvMovieRating) TextView tvMovieRating;
     @BindView (R.id.tvMovieDescription) TextView tvMovieDescription;
-    @BindView(R.id.ivMoviePoster) ImageView ivMoviePoster;
-    @BindView(R.id.tvMovieLength) TextView tvMovieLength;
-    @BindView(R.id.btnWatchTrailer) Button btnWatchTrailer;
-    @BindView(R.id.btnCast) Button btnCast;
+    @BindView (R.id.ivMoviePoster) ImageView ivMoviePoster;
+    @BindView (R.id.tvMovieLength) TextView tvMovieLength;
+    @BindView (R.id.btnWatchTrailer) Button btnWatchTrailer;
+    @BindView (R.id.btnCast) Button btnCast;
+    @BindView (R.id.btnAddToFavorites) Button btnAddToFavorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,24 +100,30 @@ public class DetailsActivity extends AppCompatActivity {
     };
 
     private void showResults(DetailApiResponse response) { //map incoming data from api to elements.
+
         mCast=response.getCast();
         tvMovieName.setText(response.getTitle());
         tvMovieReleaseYear.setText("Year: "+response.getYear());
         tvMovieRating.setText("Rating: "+response.getRating());
         tvMovieLength.setText("Length: " +response.getLength());
+
         try {
+
             Picasso.get().load(response.getPoster()).into(ivMoviePoster); //Add try-catch for when the api does not return a valid poster url
+
         }catch (Exception e){
+
             Toast.makeText(DetailsActivity.this, "There appears to be no movie poster.", Toast.LENGTH_SHORT).show();
+
         }
+
         tvMovieDescription.setText(response.getPlot());
 
         btnWatchTrailer.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(response.getTrailer().getLink().toString()));
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.getTrailer().getLink().toString()));
                 startActivity(webIntent);
 
             }
@@ -123,6 +137,33 @@ public class DetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(mContext, MovieCastActivity.class);
                 intent.putExtra("cast", Parcels.wrap(mCast));
                 mContext.startActivity(intent);
+
+            }
+
+        });
+
+        btnAddToFavorites.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
+                DatabaseReference databaseReference = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_MOVIES)  //node
+                        .child(uid); //associate with this user
+
+                DatabaseReference pushRef = databaseReference.push();
+
+                String pushId = pushRef.getKey();
+
+                mResponse.setPushId(pushId);
+
+                pushRef.setValue(mResponse);
+
+                Toast.makeText(DetailsActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
 
             }
 

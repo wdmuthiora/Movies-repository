@@ -42,6 +42,8 @@ public class DetailApiResponse {
     @Expose
     private List<List<String>> technicalSpecs = null;
 
+    private String pushId;
+
     /**
      * No args constructor for use in serialization
      * 
@@ -76,6 +78,14 @@ public class DetailApiResponse {
         this.trailer = trailer;
         this.cast = cast;
         this.technicalSpecs = technicalSpecs;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
     public String getId() {

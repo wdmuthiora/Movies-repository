@@ -24,6 +24,7 @@ public class SearchApiResponse {
      * No args constructor for use in serialization
      * 
      */
+
     public SearchApiResponse() {
     }
 
@@ -33,6 +34,7 @@ public class SearchApiResponse {
      * @param names
      * @param titles
      */
+
     public SearchApiResponse(List<SearchArrayObject> titles, List<SearchArrayObject> names, List<SearchArrayObject> companies) {
         super();
         this.titles = titles;

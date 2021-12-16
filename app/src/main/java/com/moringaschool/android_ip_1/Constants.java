@@ -5,5 +5,6 @@ public class Constants {
 
     public static final String IMDB_BASE_URL="https://imdb-internet-movie-database-unofficial.p.rapidapi.com/";
     public static final String IMDB_API=  BuildConfig.IMDB_API;
+    public static final String FIREBASE_CHILD_MOVIES="movies";
 
 }
