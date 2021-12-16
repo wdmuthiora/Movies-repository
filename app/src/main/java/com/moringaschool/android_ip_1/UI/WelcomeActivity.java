@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.startBtn) ConstraintLayout startBtn;
-    @BindView(R.id.welcomeTxt) TextView welcomeTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -75,11 +75,6 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
             }
 
         };
-//
-//        Intent intent = getIntent();
-//        String inputUserName = intent.getStringExtra("inputUserName");
-//
-//        tvProfileGreeting.setText("Welcome back, " + inputUserName);
 
         dialog=new ProgressDialog(this);
 
