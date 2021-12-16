@@ -11,36 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Ip_1">
-
+        <activity
+            android:name=".UI.FavouriteMoviesActivity"
+            android:exported="false" />
         <activity
             android:name=".UI.WelcomeActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity
-            android:name=".UI.SignUpActivity" />
-
-        <activity
-            android:name=".UI.LoginActivity" />
-
-        <activity
-            android:name=".UI.MovieCastActivity" />
-
-        <activity
-            android:name=".UI.DetailsActivity" />
-
-        <activity
-            android:name=".UI.MovieSearchActivity" />
-
-        <activity
-            android:name=".UI.MainActivity2" />
-
+        <activity android:name=".UI.SignUpActivity" />
+        <activity android:name=".UI.LoginActivity" />
+        <activity android:name=".UI.MovieCastActivity" />
+        <activity android:name=".UI.DetailsActivity" />
+        <activity android:name=".UI.MovieSearchActivity" />
+        <activity android:name=".UI.MainActivity2" />
     </application>
 
 </manifest>

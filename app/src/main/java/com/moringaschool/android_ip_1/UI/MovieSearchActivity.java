@@ -64,7 +64,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
                 if (firebaseUser != null) {
 
-                    getSupportActionBar().setTitle( firebaseUser.getDisplayName());
+//                    getSupportActionBar().setTitle( firebaseUser.getDisplayName());
 
                     tvProfileGreeting.setText("Welcome back " + firebaseUser.getDisplayName());
 
@@ -184,24 +184,32 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
     private void logout() {
 
         FirebaseAuth.getInstance().signOut();
+
         Intent intent = new Intent(MovieSearchActivity.this, WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
         finish();
 
     }
 
     @Override
     public void onStart() {
+
         super.onStart();
         firebaseAuth.addAuthStateListener(firebaseAuthListener);
+
     }
 
     @Override
     public void onStop() {
+
         super.onStop();
+
         if (firebaseAuthListener != null) {
+
             firebaseAuth.removeAuthStateListener(firebaseAuthListener);
+
         }
     }
 
