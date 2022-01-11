@@ -37,8 +37,6 @@ public class DetailsActivity extends AppCompatActivity {
     private List<Cast> mCast;
     private Context mContext;
 
-    private DetailApiResponse mResponse;
-
     RequestManager manager;
     ProgressDialog dialog; //android popup thingy
 
@@ -159,9 +157,9 @@ public class DetailsActivity extends AppCompatActivity {
 
                 String pushId = pushRef.getKey();
 
-                mResponse.setPushId(pushId);
+                response.setPushId(pushId);
 
-                pushRef.setValue(mResponse);
+                pushRef.setValue(response);
 
                 Toast.makeText(DetailsActivity.this, "Added to favourites", Toast.LENGTH_SHORT).show();
 

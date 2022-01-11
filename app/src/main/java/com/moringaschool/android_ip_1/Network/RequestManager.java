@@ -19,6 +19,7 @@ public class RequestManager{
     Context context;
     Retrofit retrofit= new Retrofit.Builder().baseUrl(Constants.IMDB_BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
 
+    //constructor
     public RequestManager(Context context) {
 
         this.context = context;
@@ -69,6 +70,7 @@ public class RequestManager{
             public void onResponse(Call<DetailApiResponse> call, Response<DetailApiResponse> response) {
 
                 if(!response.isSuccessful()){
+
                     Toast.makeText(context, "Something went wrong. Please check you connection and try again.", Toast.LENGTH_SHORT).show();
 
                 }

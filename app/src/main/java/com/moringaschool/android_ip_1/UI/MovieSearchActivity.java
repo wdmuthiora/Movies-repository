@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
@@ -76,6 +77,22 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
 
         };
 
+        //Swipe & Drag
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//                noteViewModel.delete(adapter.getNotePosition(viewHolder.getAdapterPosition()));
+
+                Toast.makeText(MovieSearchActivity.this, "Movie deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(rvRecyclerView);
+
+
         dialog=new ProgressDialog(this);
 
         manager=new RequestManager(this); //Network
@@ -138,7 +155,7 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
     private void showResult(SearchApiResponse response) {
 
         rvRecyclerView.setHasFixedSize(true); //Do not adapt size to accommodate different size results
-        rvRecyclerView.setLayoutManager(new GridLayoutManager(MovieSearchActivity.this, 1)); //show 3 items per row
+        rvRecyclerView.setLayoutManager(new GridLayoutManager(MovieSearchActivity.this, 2)); //show 3 items per row
         adapter=new HomeRecyclerAdapter(this, response.getTitles(), this);
         rvRecyclerView.setAdapter(adapter);
         
@@ -176,6 +193,10 @@ public class MovieSearchActivity extends AppCompatActivity implements OnMovieCli
             logout();
             return true;
 
+        }
+        if (id==R.id.action_favorites){
+            Intent intent=new Intent(MovieSearchActivity.this, FavouriteMoviesActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
 

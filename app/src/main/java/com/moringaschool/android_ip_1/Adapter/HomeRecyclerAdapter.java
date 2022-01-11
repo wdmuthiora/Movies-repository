@@ -61,6 +61,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeViewHolder>{
             }
 
         });
+
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public static final String TAG = LoginActivity.class.getSimpleName();
 
     @BindView(R.id.tvSignUp) TextView tvSignUp;
-    @BindView(R.id.clContinue) ConstraintLayout clContinue;
+    @BindView(R.id.btnContinue) Button btnContinue;
     @BindView(R.id.tvLoginPassword) TextView tvLoginPassword;
     @BindView(R.id.tvLoginEmail) TextView tvLoginEmail;
 
@@ -66,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         };
         
         tvSignUp.setOnClickListener(this);
-        clContinue.setOnClickListener(this);
+        btnContinue.setOnClickListener(this);
 
     }
 
@@ -74,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
 
 
-        if (view==clContinue){
+        if (view==btnContinue){
             
             loginWithPassword();
 

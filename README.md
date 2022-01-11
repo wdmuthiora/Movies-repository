@@ -1,4 +1,4 @@
-# ANDROID IP 1
+# ANDROID IP 3
 
 This is an Android Application that allows a user to search for cartoons.
 
@@ -22,6 +22,7 @@ This is an Android Application that allows a user to search for cartoons.
 - Robolectics
 - Espresso
 - Junit
+- Firebase
 
 ## Want to contribute? Great!
 
