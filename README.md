@@ -1,6 +1,6 @@
 # ANDROID IP 4
 
-This is an Android Application that allows a user to search for cartoons.
+This is an Android Application that allows a user to search for movies.
 
 ## Project Setup Instructions
 
